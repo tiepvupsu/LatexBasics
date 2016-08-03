@@ -1,0 +1,36 @@
+\documentclass{standalone}
+% \usepackage{tikz}
+\usepackage{tkz-euclide}
+% \usetikzlibrary{calc}
+\usetkzobj{all}
+% \pagestyle{empty}
+\begin{document}
+
+\begin{tikzpicture}[scale=2]
+  \coordinate (M) at (-1, 0);
+  \coordinate (N) at (3, 0);
+
+  \coordinate (O) at (0, 0);
+
+  \coordinate (A) at (30:2);
+  \coordinate (B) at (-60:1);
+
+  \tkzDefPoint(120:1.5){C}
+
+  \tkzLabelPoints(A,B,C)
+  \tkzLabelPoints[above](O)
+  \tkzDrawSegments[arrows=->](M,N)
+  \tkzDrawSegments[arrows=->,draw = black!50](O,A)
+  \tkzDrawSegments[arrows=->,draw = black!50](O,B)
+  \tkzMarkAngle[size=.5, arrows=->, mark = |, label={$\theta_A = 30^\circ$}](N,O,A)
+  \tkzMarkAngle[size=.6, mark =||, arrows=<-,label={$\theta_B = -60^\circ$}](B,O,N)
+  \tkzLabelSegment[above=4pt,rotate=30](O,A){$r_A = 2$}
+  \tkzLabelSegment[below=4pt,rotate=-60](O,B){$r_B = 1$}
+  \tkzDrawPoints[fill=black](O)
+  \tkzDrawPoints[fill=red](A)
+  \tkzDrawPoints[fill=blue](B)
+  \tkzDrawPoints[fill=green](C)
+
+\end{tikzpicture}
+
+\end{document}

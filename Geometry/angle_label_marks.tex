@@ -1,0 +1,48 @@
+%% line1.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+%% ================== commands ==========================
+\newcommand{\myShowPoints}[2]{
+\tkzDrawPoints(#1) 
+\tkzLabelPoints[#2](#1)
+}		
+\newcommand{\myGetMidPoint}[3]{
+\tkzDefMidPoint(#1,#2)\tkzGetPoint{#3}
+}		
+\begin{document}
+\begin{tikzpicture}
+	\tkzDefPoint(0,0){A}
+	\tkzDefPoints{5/0/B}	
+	\coordinate (C) at ($(A)!1!60:(B)$);
+
+	\coordinate (H) at ($(A)!1/2!(B)$);
+
+	\tkzMarkAngle[size = .5, fill = red!30](B,A,C)
+	\tkzMarkAngle[size = .5, mark = ||,mksize=2](A,C,H)
+	\tkzLabelAngle[pos=.8](B,A,C){$60^\circ$}
+	\tkzLabelAngle[pos=1.2,scale = .6](A,C,H){$30^\circ$}
+
+	\tkzMarkRightAngle[draw =blue](A,H,C)
+
+	\tkzDrawSegments(C,H)
+	\tkzDrawPolygon(A,B,C)
+
+	\tkzMarkSegment[mark = x, size = 3](A,H)
+	\tkzMarkSegment[mark = x, size = 3](B,H)
+
+	% \coordinate (D) at ($(C)!.7!90:(A)$);
+	% \tkzDrawSegments(A,C)
+	% \tkzMarkAngle[size = .7, arrows=->, fill=blue!50](B,A,C)
+	% \tkzMarkAngle[size = .7, arrows=<-](D,C,A)
+	% \tkzLabelAngle[pos = 1](B,A,C){$30^\circ$};
+	% \tkzLabelAngle[pos = -1.2](D,C,A){$-60^\circ$};
+	% \tkzLabelSegment[above left=1pt, rotate = 40](A,C){$\displaystyle AC = \frac{3}{2}AB$} 
+	\tkzDrawSegments(A,B)
+	% \tkzDrawSegments(C,D)
+	% \tkzDrawPoints(A,B,C,D)
+	\tkzLabelPoints[below](A,B,H)
+	\tkzLabelPoints[above](C)
+	% \tkzLabelPoints[above](D)
+\end{tikzpicture}
+\end{document}
