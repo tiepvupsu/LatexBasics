@@ -1,0 +1,25 @@
+%% intersection1.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+%% ================== commands ==========================
+\newcommand{\myShowPoints}[2]{
+\tkzDrawPoints(#1) 
+\tkzLabelPoints[#2](#1)
+}		
+\begin{document}
+\begin{tikzpicture}
+	\tkzDefPoint(-3,0){A}
+	\tkzDefPoints{0/1/B, -2/2/C, 1/-2/D}
+	\tkzDrawSegments[red](A,B C,D)
+	\tkzDrawLines[add = 0.1 and 1.3,draw=blue](A,C D,B)
+	% InterLL for intersection of `Line' and `Line'
+	\tkzInterLL(A,B)(C,D) \tkzGetPoint{I}
+	\tkzInterLL(A,C)(B,D) \tkzGetPoint{J}
+
+	\myShowPoints{I}{above, red}
+	\myShowPoints{J}{right, blue}
+	\myShowPoints{B, D}{right}
+	\myShowPoints{A,C}{left}
+\end{tikzpicture}
+\end{document}

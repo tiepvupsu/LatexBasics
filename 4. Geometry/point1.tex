@@ -1,0 +1,16 @@
+%% point1.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+
+\begin{document}
+\begin{tikzpicture}
+	\tkzDefPoint[](0:0){O}
+	\tkzDefPoint(-3,0){A}
+	\tkzDefPoints{1/1/B, -2/2/C, 1/-2/D}
+	\tkzDrawPoints(A,B,C,D)
+	% \tkzDrawPoints[size = 5](O)
+	\tkzLabelPoints[above](A,B)
+	\tkzLabelPoints[right](C,D)
+\end{tikzpicture}
+\end{document}

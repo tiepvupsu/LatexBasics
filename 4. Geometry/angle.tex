@@ -1,0 +1,32 @@
+%% line1.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+%% ================== commands ==========================
+\newcommand{\myShowPoints}[2]{
+\tkzDrawPoints(#1) 
+\tkzLabelPoints[#2](#1)
+}		
+\newcommand{\myGetMidPoint}[3]{
+\tkzDefMidPoint(#1,#2)\tkzGetPoint{#3}
+}		
+\begin{document}
+\begin{tikzpicture}
+	\tkzDefPoint(-3,0){A}
+	\tkzDefPoints{0/.5/B}
+	
+	\coordinate (C) at ($(A)!1.5!30:(B)$);
+	\coordinate (D) at ($(C)!.7!-60:(A)$);
+	\tkzDrawSegments(A,C)
+	\tkzMarkAngle[size = .7, arrows=->, fill=blue!50](B,A,C)
+	\tkzMarkAngle[size = .7, arrows=<-](D,C,A)
+	\tkzLabelAngle[pos = 1](B,A,C){$30^\circ$};
+	\tkzLabelAngle[pos = -1.2](D,C,A){$-60^\circ$};
+	\tkzLabelSegment[above left=1pt, rotate = 40](A,C){$\displaystyle AC = \frac{3}{2}AB$} 
+	\tkzDrawSegments(A,B)
+	\tkzDrawSegments(C,D)
+	\tkzDrawPoints(A,B,C,D)
+	\tkzLabelPoints(A,B,C)
+	\tkzLabelPoints[above](D)
+\end{tikzpicture}
+\end{document}

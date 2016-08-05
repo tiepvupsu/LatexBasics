@@ -1,0 +1,76 @@
+%% triangle_euler.tex
+\documentclass{standalone}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
+\begin{document}
+\begin{tikzpicture}
+	\clip (-1,-1) rectangle (9,7);
+	\tkzDefPoints{0/0/B, 8/0/C, 1/6/A}
+	% connecting 3 points
+	\tkzDrawPolygon(A,B,C)
+
+	\tkzDrawAltitude(B,C)(A) \tkzGetPoint{D}
+	\tkzDrawAltitude(A,C)(B) \tkzGetPoint{E}
+	\tkzDrawAltitude(B,A)(C) \tkzGetPoint{F}
+
+	\tkzInterLL(A,D)(B,E) \tkzGetPoint{H}
+
+	\coordinate (M) at ($(B)!.5!(C)$);
+	\coordinate (N) at ($(A)!.5!(C)$);
+	\coordinate (P) at ($(A)!.5!(B)$);
+
+	\tkzDrawCircle[circum, draw = blue](D,E,F)
+	\tkzCircumCenter(D,E,F) \tkzGetPoint{I}
+
+	\coordinate (O) at ($(H)!2!(I)$);
+
+	\tkzDrawSegments[red, thick](H,O)
+
+	\tkzDrawSegments[green](O,M)
+	\tkzDrawSegments[green](O,N)
+	\tkzDrawSegments[green](O,P)
+
+	\tkzMarkRightAngle(O,M,B)
+	\tkzMarkRightAngle(O,N,A)
+	\tkzMarkRightAngle(O,P,B)
+	
+	\tkzLabelPoints[right](C)
+	\tkzLabelPoints[above](A)
+	\tkzLabelPoints[below](D)
+	\tkzLabelPoints[right](E)
+	\tkzLabelPoints[left](F)
+	\tkzLabelPoints[left](P)
+	\tkzLabelPoints[right](N)
+	\tkzLabelPoints[below](M)
+	\tkzLabelPoints[below](I)
+	\tkzLabelPoints[below](O)
+
+	\tkzLabelPoints[left](B)
+	\tkzLabelPoints[yshift=0mm,xshift=-1mm](H)
+
+	\tkzMarkRightAngle[scale=.7](A,D,C)
+	\tkzMarkRightAngle[scale=.7](A,E,B)
+	\tkzMarkRightAngle[scale=.7](A,F,C)
+
+	\tkzInterLC(A,H)(I,D) \tkzGetPoints{}{R}
+	\tkzInterLC(B,H)(I,D) \tkzGetPoints{S}{}
+	\tkzInterLC(C,H)(I,D) \tkzGetPoints{T}{}
+
+	\tkzMarkSegment[mark = x](H,I)
+	\tkzMarkSegment[mark = x](O,I)
+
+	\tkzMarkSegment[mark = |](A,R)
+	\tkzMarkSegment[mark = |](R,H)
+
+	\tkzMarkSegment[mark = ||](B,S)
+	\tkzMarkSegment[mark = ||](H,S)
+
+	\tkzMarkSegment[mark = |||](C,T)
+	\tkzMarkSegment[mark = |||](H,T)
+
+	\tkzLabelPoints(R) \tkzDrawPoints(R)
+	\tkzLabelPoints[right](S) \tkzDrawPoints(S)
+	\tkzLabelPoints(T) \tkzDrawPoints(T)
+	\tkzDrawPoints(A,B,C,D,E,F,H,M,N,P,I,O)
+\end{tikzpicture}
+\end{document}

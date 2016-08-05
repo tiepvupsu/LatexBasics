@@ -1,0 +1,11 @@
+\documentclass[pstricks]{standalone}
+\usepackage{pst-eucl}
+\begin{document}
+\pspicture(8,6)
+    \pstGeonode(2,3){A}(6,5){B}(6,2){P}
+    \pstProjection[PointName=none]{A}{B}{P}
+    \psset{nodesep=-1}
+    \pstLineAB{A}{B}
+    \pstLineAB{P}{P'}
+\endpspicture
+\end{document}
