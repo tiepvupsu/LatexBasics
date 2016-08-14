@@ -1,0 +1,18 @@
+\frametitle{Another good plot}
+
+\begin{columns}
+
+    \begin{column}{0.6\textwidth}
+    \begin{figure}
+        \includegraphics[scale = .3]{figs/good_plot1.png}
+    \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+    \begin{itemize}
+        \item Font size/family
+        \item Markers, line thickness, Colors
+        \item Focus on main methods.
+    \end{itemize}
+
+    \end{column}
+\end{columns}
